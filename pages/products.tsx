@@ -25,7 +25,7 @@ const Home: NextPage = () => {
             <div className={styles.contentArea}>
                 <div className={styles.leftNav} ></div>
                 <div className={styles.gridContainer}>
-                    {productData.map(({url, description, price, stock}, i) => <ProductTile url={url} description={description} price={price} stock={stock} gridPosition={i} />)}
+                    {productData.map(({url, description, price, stock}, i) => <ProductTile url={url} description={description} price={price} stock={stock} gridPosition={i} key={i} />)}
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ type ProductTileProps = {
 const ProductTile = (props: ProductTileProps) => {
     return <div className={styles.productTile}>
         <div className={styles.imgContainer}>
-            <Image layout="fill" src={props.url} objectFit="cover"
+            <Image layout="fill" src={props.url} objectFit="cover" alt={"A product image for " + props.description}
             priority={props.gridPosition <=2}
             sizes="(max-width: 1000px) 50vw,
                    (max-width: 1500px) 33vw,
